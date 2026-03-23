@@ -11,7 +11,7 @@
 # Överför 120kr från Konto 1 till konto 2
 # Överföring kan inte genomföras mellan konton
 
-from src.bank_account import BankAccount
+from src.bankaccount import BankAccount
 from src.transaction import Transaction
 
 class LoggerSpy:
@@ -31,7 +31,7 @@ def test_transfer_success_move_money_and_logs():
     assert account1.balance == 80
     assert account2.balance == 70
 
-    assert logger.messages == ["Konto 1: Uttag 20kr. Nytt saldo 80kr", "Konto 2: Insättning 20kr. Nytt saldo 70kr"]
+    assert logger.messages == ["Uttag 20kr. Nytt saldo 80kr", "Insättning 20kr. Nytt saldo 70kr"]
 
 
 def test_transfer_fail_move_money_and_logs():
@@ -44,4 +44,4 @@ def test_transfer_fail_move_money_and_logs():
     assert account1.balance == 100
     assert account2.balance == 50
 
-    assert logger.messages == ["Du har inte tillräckligt på kontot. Saldo konto 1 100kr"]
+    assert logger.messages == ["Du har inte tillräckligt på kontot. Saldo 100kr"]
